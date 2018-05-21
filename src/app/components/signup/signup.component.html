@@ -1,0 +1,21 @@
+<section class="container">
+  <form [formGroup]="user" (ngSubmit)="onSubmit(user)" id="signup">
+    <div class="form-group">
+      <p>
+        <input type="email" formControlName="signUpEmail" placeholder="Email">
+      </p>
+      <p>
+        <input type="password" formControlName="signUpPassword" placeholder="Password">
+      </p>
+      <p>
+          <input type="password" formControlName="signUpConfirmedPassword" placeholder="Password">
+      </p> 
+      <div class="checkbox">
+          <label style="font-size: 11px !important;"><input type="checkbox" name="acceptTerms" required> Accept Terms & Conditions</label>
+      </div>
+    </div>
+      <button type="submit" [disabled]="!user.valid">Submit</button>
+  </form>
+</section>
+
+ 

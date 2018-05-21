@@ -1,0 +1,13 @@
+.container {
+    /* background-color: grey; */
+    width: 250px;
+    height: 120px;
+    text-align: left;
+    position: relative;
+    border: 2px solid lightblue;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    padding: 10px;
+    /* margin-left: 15px;     */
+}
