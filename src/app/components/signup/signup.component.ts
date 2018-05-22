@@ -2,6 +2,7 @@ import { UserService } from './../../user.service';
 import { User } from './../../user';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,15 +11,21 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class SignupComponent implements OnInit {
 
-  user: FormGroup;
+  newUser: FormGroup;
   signUpEmail = new FormControl("", Validators.required);
   signUpPassword = new FormControl("", Validators.required);
   signUpConfirmedPassword = new FormControl("", Validators.required);
+  private router: Router;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private r: Router
+  ) {
+    this.router = r;
+  }
   
   ngOnInit() {
-    this.user = this.fb.group({
+    this.newUser = this.fb.group({
       "signUpEmail": this.signUpEmail,
       "signUpPassword": this.signUpPassword,
       "signUpConfirmedPassword": this.signUpConfirmedPassword
@@ -27,8 +34,14 @@ export class SignupComponent implements OnInit {
 
   onSubmit( { value, valid }: { value: FormGroup, valid: boolean }) {
     console.log(value, valid);
-    console.log(this.user);  
+    console.log(this.newUser);  
+    this.router.navigateByUrl('/search');
+    //adduser
 
-    
   }
+
+  public preventDefault(event: Event): void {
+    event.preventDefault();
+  }
+  
 }

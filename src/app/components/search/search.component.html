@@ -1,59 +1,65 @@
-
-  <!-- <app-checkbox [checkbox]="1"></app-checkbox>
-  <app-checkbox [checkbox]="2"></app-checkbox>
-  <app-checkbox [checkbox]="3"></app-checkbox>
-  <app-checkbox [checkbox]="4"></app-checkbox>
-  <app-checkbox [checkbox]="5"></app-checkbox>
-  <app-checkbox [checkbox]="6"></app-checkbox>
-  <app-checkbox [checkbox]="7"></app-checkbox>
-  <app-checkbox [checkbox]="8"></app-checkbox>
-  <app-checkbox [checkbox]="9"></app-checkbox>
-  <app-checkbox [checkbox]="10"></app-checkbox>
-  <app-checkbox [checkbox]="11"></app-checkbox>
-  <app-checkbox [checkbox]="12"></app-checkbox>
-  <app-checkbox [checkbox]="13"></app-checkbox>
-  <app-checkbox [checkbox]="14"></app-checkbox>
-  <app-checkbox [checkbox]="15"></app-checkbox> -->
-  <div class="container">
+<section class="container">
     <form [formGroup]="form">
+        <div class="form-group">
+            <div>
+                <p>
+                    <label>Agency Name</label>
+                </p>
+                <p>
+                    <input type="checkbox" formControlName="agency_name_1" value="Board Meeting" checked> Board Meeting<br>
+                    <input type="checkbox" name="agency_name_2" value="Housing Authority" checked> Housing Authority<br>
+                    <input type="checkbox" name="agency_name_3" value="Housing Preservation & Development"> Housing Preservation & Development<br>
+                    <input type="checkbox" name="agency_name_4" value="Parks & Recreation"> Parks & Recreation<br>
+                    <input type="checkbox" name="agency_name_5" value="Design & Construction" checked> Design & Construction<br>
+                </p>
+            </div>
+
+            <div>
+                <p>
+                    <label>Section Name</label>
+                </p>
+                <p>    
+                    <input type="checkbox" name="section_name_1" value="Public Hearings & Meetings" checked> Public Hearings & Meetings<br>
+                    <input type="checkbox" name="section_name_2" value="Procurement" checked> Procurement<br>
+                </p>
+            </div>
+
+            <div>
+                <p>
+                    <label>Category Description</label>
+                </p>
+                <p>
+                    <input type="checkbox" name="category_description_1" value="Construction/Construction Services" checked> Construction/Construction Services<br>
+                </p>
+            </div>
+            
+            <div>
+                <p>
+                    <label>Type of Notice Description</label>
+                </p>
+                <p>
+                    <input type="checkbox" name="type_of_notice_description_1" value="Award" checked> Award<br>
+                    <input type="checkbox" name="type_of_notice_description_2" value="Intent to Award" checked> Intent to Award<br>
+                    <input type="checkbox" name="type_of_notice_description_3" value="Solicitation" checked> Solicitation<br>
+                </p>    
+            </div>
+
+            <div>
+                <p>
+                    <label>Selection Method Description</label>
+                </p>    
+                <p>
+                    <input type="checkbox" name="selection_method_description_1" value="Request for Proposals" checked> Request for Proposals<br>
+                    <input type="checkbox" name="selection_method_description_2" value="Competitive Sealed Bids" checked> Competitive Sealed Bids<br>
+                    <input type="checkbox" name="selection_method_description_3" value="Competitive Sealed Proposals" checked> Competitive Sealed Proposals<br>
+                    <input type="checkbox" name="selection_method_description_4" value="Negotiated Acquisition" checked> Negotiated Acquisition<br>
+                    <input type="checkbox" name="selection_method_description_5" value="Demonstration Project" checked> Demonstration Project<br>
+                </p>    
+            </div>
+            <p>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </p>   
+        </div>     
+    </form>
+</section>    
  
-    
-      <div>
-        <label>Agency Name</label>
-        <input type="checkbox" formControlName="agency_name_1" value="Board Meeting" checked> Board Meeting<br>
-        <input type="checkbox" name="agency_name_2" value="Housing Authority" checked> Housing Authority<br>
-        <input type="checkbox" name="agency_name_3" value="Housing Preservation & Development"> Housing Preservation & Development<br>
-        <input type="checkbox" name="agency_name_4" value="Parks & Recreation"> Parks & Recreation<br>
-        <input type="checkbox" name="agency_name_5" value="Design & Construction" checked> Design & Construction<br>
-      </div>
-
-      <div>
-          <label>Section Name</label>
-          <input type="checkbox" name="section_name_1" value="Public Hearings & Meetings" checked> Public Hearings & Meetings<br>
-          <input type="checkbox" name="section_name_2" value="Procurement" checked> Procurement<br>
-      </div>
-
-      <div>
-          <label>Category Description</label>
-          <input type="checkbox" name="category_description_1" value="Construction/Construction Services" checked> Construction/Construction Services<br>
-      </div>
-      
-      <div>
-          <label>Type of Notice Description</label>
-          <input type="checkbox" name="type_of_notice_description_1" value="Award" checked> Award<br>
-          <input type="checkbox" name="type_of_notice_description_2" value="Intent to Award" checked> Intent to Award<br>
-          <input type="checkbox" name="type_of_notice_description_3" value="Solicitation" checked> Solicitation<br>
-      </div>
-
-      <div>
-          <label>Selection Method Description</label>
-          <input type="checkbox" name="selection_method_description_1" value="Request for Proposals" checked> Request for Proposals<br>
-          <input type="checkbox" name="selection_method_description_2" value="Competitive Sealed Bids" checked> Competitive Sealed Bids<br>
-          <input type="checkbox" name="selection_method_description_3" value="Competitive Sealed Proposals" checked> Competitive Sealed Proposals<br>
-          <input type="checkbox" name="selection_method_description_4" value="Negotiated Acquisition" checked> Negotiated Acquisition<br>
-          <input type="checkbox" name="selection_method_description_5" value="Demonstration Project" checked> Demonstration Project<br>
-      </div>
-      <button type="submit" class="btn btn-success">Submit</button>>
-  </form>
-
-</div>

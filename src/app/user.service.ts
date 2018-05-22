@@ -18,8 +18,8 @@ export class UserService {
   //   return this.http.get('/api/users/${id}');
   // }
 
-  getUser(user) {
-    return this.http.get('/api/users/${user.id}');
+  getUsers(user) {
+    return this.http.get(`/api/users/${user.id}`);
   }
 
   addUser(user) {
@@ -30,13 +30,17 @@ export class UserService {
     });
   }
 
-  editUser(user, filters: boolean[] ) {
-    return this.http.put('/api/users/${user.id}', {
-      "filters": filters
+  // Use backtick when using $
+  editUser(user) {
+    return this.http.patch(`/api/users/${user.id}`, {
+      "email": user.email,
+      "password": user.password,
+      "filters": user.filters
     });
   }
 
-  removeUser(user){
-    return this.http.delete('/api/users/${user.id)');
+  deleteUser(user){
+    return this.http.delete('/api/users/' + user.id);
   }
 }
+

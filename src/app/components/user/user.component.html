@@ -1,0 +1,45 @@
+<div class="col-md-6">
+  <button class="btn btn-success" (click)="getUsers()">Get All Users</button>
+  <h3> Users</h3>
+  <table>
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Filters</th>
+    </tr>
+  </thead>
+    <tbody *ngIf="users">
+    <tr *ngFor="let user of users">
+      <!-- <td class="hidden"></td> -->
+      <td>{{user.id}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.password}}</td>
+      <td>{{user.filters}}</td>
+      <td><button (click)="deleteUser(user)"> Delete User</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h3 class="text-center">Add User</h3>
+  <form>
+    <div class="form-group">
+      <input type="email" [(ngModel)]="user.email" placeholder="Email" name="email" class="form-control" id="email">
+      <input [(ngModel)]="user.password" placeholder="Password" name="password" class="form-control" id="password">
+       <input [(ngModel)]="user.filters" placeholder="filters" name="filters" class="form-control" id="filters">
+    </div>
+    <button class="btn btn-success" (click)="addUser()">Add</button>
+  </form>
+
+  <h3 class="text-center">Edit User</h3>
+  <form>
+    <div class="form-group">
+      <input type="email" [(ngModel)]="userEdit.id" placeholder="ID" name="IDEdit" class="form-control" id="IDEdit">
+      <input type="email" [(ngModel)]="userEdit.email" placeholder="Email" name="emailEdit" class="form-control" id="emailEdit">
+      <input [(ngModel)]="userEdit.password" placeholder="Password" name="passwordEdit" class="form-control" id="passwordEdit">
+      <input [(ngModel)]="userEdit.filters" placeholder="filters" name="filtersEdit" class="form-control" id="filtersEdit">
+    </div>
+    <button class="btn btn-success" (click)="editUser()">Edit</button>
+  </form>
+</div>

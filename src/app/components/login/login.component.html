@@ -1,14 +1,14 @@
 <section class="container">
-  <form [formGroup]="user" (ngSubmit)="onSubmit(user)" id="login">
+  <!-- <form [formGroup]="user" (ngSubmit)="onSubmit(user)" (submit)="preventDefault($event)"> -->
+  <form [formGroup]="user" (ngSubmit)="onSubmit(user, $event)">
     <div class="form-group">
       <p>
         <input type="email" formControlName="logInEmail" placeholder="Email">
       </p>  
       <p>
-        <input type="password" formControlName="logInPassword" placeholder="Password">
+        <input type="text" formControlName="logInPassword" placeholder="Password">
       </p>  
     </div>  
-    <button type="submit" class="btn btn-primary" [disabled]="!user.valid">Log In</button>
+    <button type="button" [routerLink]="['/search']" class="btn btn-primary" [disabled]="!user.valid">Log In</button>
   </form>
 </section>
-
