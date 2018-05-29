@@ -1,6 +1,19 @@
-<section class="container">
-    <div class="middle">
-        <app-login></app-login>
-        <app-signup></app-signup>
-    </div>
-</section>
+<div class="container">    
+    <!-- <div class="row">            -->
+    <div class="parent">
+        <div class="child">
+            <!-- <div class="vertical-center-row"> -->
+                <!-- <div class="text-center col-lg-3 col-md-3 col-sm-6 col-xs-12"> -->
+                    <!-- <h2>{{ appInfo.name }}</h2> -->
+                    <!-- <p>Copyright &copy; {{ appInfo.copyrightYears }} {{ appInfo.copyrightHolder }}</p>
+                    <p>Version {{ appInfo.version }}</p> -->
+                    <p class="text-danger">Unauthorized access to this system is prohibited.</p>
+                <!-- </div> -->
+                <app-login></app-login>
+                <app-signup></app-signup>
+            <!-- </div>     -->
+        </div>
+    </div>    
+</div>
+
+

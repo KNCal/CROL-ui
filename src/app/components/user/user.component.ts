@@ -10,7 +10,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class UserComponent implements OnInit {
 
-  users: any;
+  private users: any;
   user = 
     { "email": "",
     "password": "",
@@ -31,11 +31,12 @@ export class UserComponent implements OnInit {
         .subscribe( data => {
           console.log(data);
         });
-
   };
   
   editUser(userEdit){
-    this.userService.editUser(this.userEdit).subscribe(data=>console.log(data))
+    this.userService.editUser(
+      this.userEdit).
+      subscribe(data=>console.log(data))
   }
 
   getUsers() {

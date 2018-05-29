@@ -1,65 +1,92 @@
-<section class="container">
-    <form [formGroup]="form">
-        <div class="form-group">
-            <div>
-                <p>
-                    <label>Agency Name</label>
-                </p>
-                <p>
-                    <input type="checkbox" formControlName="agency_name_1" value="Board Meeting" checked> Board Meeting<br>
-                    <input type="checkbox" name="agency_name_2" value="Housing Authority" checked> Housing Authority<br>
-                    <input type="checkbox" name="agency_name_3" value="Housing Preservation & Development"> Housing Preservation & Development<br>
-                    <input type="checkbox" name="agency_name_4" value="Parks & Recreation"> Parks & Recreation<br>
-                    <input type="checkbox" name="agency_name_5" value="Design & Construction" checked> Design & Construction<br>
-                </p>
-            </div>
+<div class="parent-wrapper"> 
+    <div class="parent">
+        <div class="child">
+            <div class="filter-header">
+                <div class="filter-buttons">
+                    <div class="col-sm">
+                        Select your filters:
+                    </div>
+                    <div class="col-sm">
+                        <div class="filter-buttons_2">
+                            <button type="submit" class="btn btn-success">Hide</button>
+                        </div>    
+                        <div class="filter-buttons_2">                               
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>    
+                    </div>    
+                </div>
+            </div>    
 
-            <div>
-                <p>
-                    <label>Section Name</label>
-                </p>
-                <p>    
-                    <input type="checkbox" name="section_name_1" value="Public Hearings & Meetings" checked> Public Hearings & Meetings<br>
-                    <input type="checkbox" name="section_name_2" value="Procurement" checked> Procurement<br>
-                </p>
-            </div>
+            <form [formGroup]="user" (ngSubmit)="onSubmit(user, $event)">
+            <!-- <form [formGroup]="form" (submit)="submit(form.value)"> -->
+                <div class="form-group">
+                    <p>
+                        <label>Agency Name</label>
+                    </p> 
+                    <div *ngFor='let field of user?.controls?.fields?.controls | slice:0:5; let i=index'>
+                        <!-- <input type="checkbox" [formControl]="field" [formControlName]="fields[i].name"/> {{fields[i].name}}<br> -->
+                        <input type="checkbox" [formControl]="field"/> {{fields[i].name}}<br>
+                    </div>    
+                </div>
 
-            <div>
-                <p>
-                    <label>Category Description</label>
-                </p>
-                <p>
-                    <input type="checkbox" name="category_description_1" value="Construction/Construction Services" checked> Construction/Construction Services<br>
-                </p>
-            </div>
+                <div class="form-group">
+                    <p>
+                        <label>Section Name</label>
+                    </p>  
+                    <div *ngFor='let field of user?.controls?.fields?.controls | slice:5:6; let i=index'>
+                        <!-- <input type="checkbox" [formControl]="field" [formControlName]="fields[i+5].name"/> {{fields[i+5].name}}<br> -->
+                        <input type="checkbox" [formControl]="field"/> {{fields[i+5].name}}<br>
+                    </div> 
+                </div>
+
+                <div class="form-group"> 
+                    <p>
+                        <label>Category Description</label>
+                    </p>
+                    <div *ngFor="let field of user?.controls?.fields?.controls | slice:6:7; let i=index">
+                        <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+7].name}}"/> {{fields[i+6].name}}<br> -->
+                        <input type="checkbox" [formControl]="field"/> {{fields[i+6].name}}<br>
+                    </div> 
+                </div>
+                
+                <div class="form-group">
+                    <p>
+                        <label>Type of Notice Description</label>
+                    </p>
+                    <div *ngFor="let field of user?.controls?.fields?.controls | slice:7:10; let i=index">
+                        <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+8].name}}"/> {{fields[i+7].name}}<br> -->
+                        <input type="checkbox" [formControl]="field"/> {{fields[i+7].name}}<br>
+                    </div>    
+                </div>
+
+                <div class="form-group">
+                    <p>
+                        <label>Selection Method Description</label>
+                    </p>    
+                    <div *ngFor="let field of user?.controls?.fields?.controls | slice:10; let i=index">
+                            <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+9].name}}"/> {{fields[i+10].name}}<br> -->
+                            <input type="checkbox" [formControl]="field"/> {{fields[i+10].name}}<br>
+                        </div>    
+                </div>
+
+                <div class="button_submit">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>  
+            </form>
+        </div>
+
+
+        <!-- <div class="child">
+
+
+
             
-            <div>
-                <p>
-                    <label>Type of Notice Description</label>
-                </p>
-                <p>
-                    <input type="checkbox" name="type_of_notice_description_1" value="Award" checked> Award<br>
-                    <input type="checkbox" name="type_of_notice_description_2" value="Intent to Award" checked> Intent to Award<br>
-                    <input type="checkbox" name="type_of_notice_description_3" value="Solicitation" checked> Solicitation<br>
-                </p>    
-            </div>
+        </div>
 
-            <div>
-                <p>
-                    <label>Selection Method Description</label>
-                </p>    
-                <p>
-                    <input type="checkbox" name="selection_method_description_1" value="Request for Proposals" checked> Request for Proposals<br>
-                    <input type="checkbox" name="selection_method_description_2" value="Competitive Sealed Bids" checked> Competitive Sealed Bids<br>
-                    <input type="checkbox" name="selection_method_description_3" value="Competitive Sealed Proposals" checked> Competitive Sealed Proposals<br>
-                    <input type="checkbox" name="selection_method_description_4" value="Negotiated Acquisition" checked> Negotiated Acquisition<br>
-                    <input type="checkbox" name="selection_method_description_5" value="Demonstration Project" checked> Demonstration Project<br>
-                </p>    
-            </div>
-            <p>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </p>   
-        </div>     
-    </form>
-</section>    
+        <div class="child">
+
+        </div>
+             -->
+    </div>
+</div>
  
