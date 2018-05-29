@@ -25,9 +25,9 @@
   <h3 class="text-center">Add User</h3>
   <form>
     <div class="form-group">
-      <input type="email" [(ngModel)]="user.email" placeholder="Email" name="email" class="form-control" id="email">
-      <input [(ngModel)]="user.password" placeholder="Password" name="password" class="form-control" id="password">
-       <input [(ngModel)]="user.filters" placeholder="filters" name="filters" class="form-control" id="filters">
+      <input type="email" [(ngModel)]="user.email" placeholder="Enter email *" name="email" class="form-control" id="email">
+      <input [(ngModel)]="user.password" placeholder="Enter password *" name="password" class="form-control" id="password">
+       <input [(ngModel)]="user.filters" placeholder="Enter filters (optional)" name="filters" class="form-control" id="filters">
     </div>
     <button class="btn btn-success" (click)="addUser()">Add</button>
   </form>
@@ -35,10 +35,10 @@
   <h3 class="text-center">Edit User</h3>
   <form>
     <div class="form-group">
-      <input type="email" [(ngModel)]="userEdit.id" placeholder="ID" name="IDEdit" class="form-control" id="IDEdit">
-      <input type="email" [(ngModel)]="userEdit.email" placeholder="Email" name="emailEdit" class="form-control" id="emailEdit">
-      <input [(ngModel)]="userEdit.password" placeholder="Password" name="passwordEdit" class="form-control" id="passwordEdit">
-      <input [(ngModel)]="userEdit.filters" placeholder="filters" name="filtersEdit" class="form-control" id="filtersEdit">
+      <!-- <input type="email" [(ngModel)]="userEdit.id" placeholder="ID" name="IDEdit" class="form-control" id="IDEdit"> -->
+      <input type="email" [(ngModel)]="userEdit.email" placeholder="Enter email *" name="emailEdit" class="form-control" id="emailEdit">
+      <input [(ngModel)]="userEdit.password" placeholder="Enter Password *" name="passwordEdit" class="form-control" id="passwordEdit">
+      <input [(ngModel)]="userEdit.filters" placeholder="Enter filters (optional)" name="filtersEdit" class="form-control" id="filtersEdit">
     </div>
     <button class="btn btn-success" (click)="editUser()">Edit</button>
   </form>

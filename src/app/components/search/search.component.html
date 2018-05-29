@@ -76,17 +76,58 @@
         </div>
 
 
-        <!-- <div class="child">
+        <div class="child">
+            <div>
+                <h4>Data from Agency Name Selections:</h4>
+                <ul *ngIf="queryStreamAgency">
+                    <li *ngFor="let item of queryStreamAgency">
+                        {{item.agency_name}} 
+                    </li>               
+                </ul>
+            </div>
+  
+            <div>
+                <h4>Data from Section Name Selections:</h4>
+                <ul *ngIf="queryStreamAgency">
+                    <li *ngFor="let item of queryStreamSection">
+                        {{item.section_name}} 
+                    </li>
+                </ul>
+            </div>
 
+            <div>
+                <h4>Data from Category Description Selections:</h4>
+                <ul *ngIf="queryStreamCategory">             
+                    <li *ngFor="let item of queryStreamCategory">
+                        {{item.category_description}} 
+                    </li>
+                </ul>    
+            </div>            
 
+            <div>
+                <h4>Data from Type of Notice Description Selections:</h4>
+                <ul *ngIf="queryStreamTypeDesc">
+                    <li *ngFor="let item of queryStreamTypeDesc">
+                        {{item.type_of_notice_description}} 
+                    </li>   
+                </ul>    
+            </div>
 
-            
+            <div>
+                <h4>Data from Selection Method Description Selections:</h4>
+                <ul *ngIf="queryStreamSelMeth">
+                    <li *ngFor="let item of queryStreamSelMeth">
+                        {{item.selection_method_description}} 
+                    </li>   
+                </ul>    
+            </div>
         </div>
+
 
         <div class="child">
 
         </div>
-             -->
+             
     </div>
 </div>
  
