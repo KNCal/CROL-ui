@@ -15,17 +15,17 @@
 }
 
 .filter-buttons_2{
-    margin:0 10px;
+    margin:10px 0 0 2%;
     float: right;
 }
 
 .button_submit {
      position: relative;
-     right: -85%;
+     right: -90%;
 } 
   
 .button_label {
-    padding: 0;
+    padding: 1% 0 1% 0;
     border: none;
     background: none;
     font-size: 18px;
@@ -59,18 +59,6 @@ p:not(.intro) {
 }
 
 
-.logout{
-    position: absolute;
-    line-height: 12px;
-    width: 80px;
-    font-size: 10pt;
-    font-family: tahoma;
-    margin-top: 1px;
-    margin-right: 2px;
-    position:absolute;
-    top: 60px;
-    right: 10px;
-}
 
 /* .table-display {
     display: block;
@@ -80,4 +68,11 @@ p:not(.intro) {
     content: "";
     display: block; 
     clear: both;
-  }
+}
+
+.container-box {
+    border: 2px solid black;
+    /* border-radius: 10px; */
+    margin-top: 30px;
+    margin-bottom: 15px;
+}

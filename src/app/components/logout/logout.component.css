@@ -1,0 +1,12 @@
+.logout{
+    position: absolute;
+    line-height: 12px;
+    width: 80px;
+    font-size: 10pt;
+    font-family: tahoma;
+    margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    top: 60px;
+    right: 10px;
+}

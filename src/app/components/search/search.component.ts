@@ -55,7 +55,7 @@ export class SearchComponent implements OnInit {
     return this.fb.array(fieldsArray);
   }
 
-
+  //Build query string and use Subject to make get request to API
   buildQueryAPI (typeCount, type) {
     this.prefix = 'https://data.cityofnewyork.us/resource/buex-bi6w.json?$where=' + type + ' in (\'';
     this.queryStr = '';
@@ -70,7 +70,7 @@ export class SearchComponent implements OnInit {
         this.queryStr += ')';
         this.queryStr = this.prefix + this.queryStr;
 
-        //next only on the service that has been subscribed
+        //get only service that is passed in
         switch (type) {
           case 'agency_name' : this.searchSubjectAgency.next(this.queryStr);
             break;
@@ -85,10 +85,11 @@ export class SearchComponent implements OnInit {
           default:
             break;      
     }}};
-  
 
   onSubmit(user1: FormGroup, event: Event) {
     event.preventDefault(); 
+
+    //Form returns value and status.  Processing from value of array of booleans.
 
     //Get index of the values that are true
     var x = user1.value.fields.map((y,index) => {if (y) return index;});
@@ -96,12 +97,17 @@ export class SearchComponent implements OnInit {
     //Filter out undefined
     const filtered: string[] = x.filter(element => element !== undefined);
 
+    //Countinng number of selected checkboxex in each cateogry to form query.  At the moment, buildQeuryAPI is using "where..in"
+    //SoQL syntax.
+    //Hard code total number of elements in each category here.  Need to dynamically do this.  Create an interface to 
+    //the fields table and do count processing.  Fields table stored in fields.ts
     const agencyCount: string[] = filtered.filter(y => y < "5");
     const sectionCount: string[] = filtered.filter(y => "4" < y && y < "6");
     const categoryCount: string[] = filtered.filter(y => "5" < y && y < "7");
     const typeDescCount: string[] = filtered.filter(y => "6" < y && y < "10");
     const selMethCount: string[] = filtered.filter(y => y > "9");
 
+    //Call BuildQueryAPI on each category passing the number of selected checkboxes in that category and category name
     this.buildQueryAPI(agencyCount, 'agency_name');
     this.buildQueryAPI(sectionCount, 'section_name');
     this.buildQueryAPI(categoryCount, 'category_description');
@@ -111,7 +117,8 @@ export class SearchComponent implements OnInit {
   
 
   ngOnInit() {
-    // this.createForm();
+
+    //Call search service to listen in each select category
     this.searchSubjectAgency
     .pipe(debounceTime(1000))
     .pipe(distinctUntilChanged())

@@ -1,261 +1,252 @@
 <div class="parent-wrapper"> 
     <div class="parent">
+
         <div class="child">
-            <div class="filter-header">
+            <div class="container filter-header">
                 <div class="filter-buttons">
-                    <div class="col-sm">
+                    <div class="col-sm" style="float:left;">
                         Select filters:
                     </div>
                     <div class="col-sm">
-                        <button type="button" class="btn btn-info filter-hide" data-toggle="collapse" data-target="#formContent">Hide</button>
+                        <button type="button" class="btn btn-info filter-buttons" data-toggle="collapse" data-target="#formContent">Hide / Show</button>
                         <button type="submit" class="btn btn-success filter-buttons_2">Save</button>
                     </div>    
                 </div>
-            </div>    
-            <div id="formContent" class="collapse in">
-                <form [formGroup]="user" (ngSubmit)="onSubmit(user, $event)">
-                <!-- <form [formGroup]="form" (submit)="submit(form.value)"> -->
-                    <div class="form-group">
-                        <p>
-                            <label>Agency Name</label>
-                        </p> 
-                        <div *ngFor='let field of user?.controls?.fields?.controls | slice:0:5; let i=index'>
-                            <!-- <input type="checkbox" [formControl]="field" [formControlName]="fields[i].name"/> {{fields[i].name}}<br> -->
-                            <input type="checkbox" [formControl]="field"/> {{fields[i].name}}<br>
-                        </div>    
-                    </div>
-
-                    <div class="form-group">
-                        <p>
-                            <label>Section Name</label>
-                        </p>  
-                        <div *ngFor='let field of user?.controls?.fields?.controls | slice:5:6; let i=index'>
-                            <!-- <input type="checkbox" [formControl]="field" [formControlName]="fields[i+5].name"/> {{fields[i+5].name}}<br> -->
-                            <input type="checkbox" [formControl]="field"/> {{fields[i+5].name}}<br>
-                        </div> 
-                    </div>
-
-                    <div class="form-group"> 
-                        <p>
-                            <label>Category Description</label>
-                        </p>
-                        <div *ngFor="let field of user?.controls?.fields?.controls | slice:6:7; let i=index">
-                            <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+7].name}}"/> {{fields[i+6].name}}<br> -->
-                            <input type="checkbox" [formControl]="field"/> {{fields[i+6].name}}<br>
-                        </div> 
-                    </div>
-                    
-                    <div class="form-group">
-                        <p>
-                            <label>Type of Notice Description</label>
-                        </p>
-                        <div *ngFor="let field of user?.controls?.fields?.controls | slice:7:10; let i=index">
-                            <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+8].name}}"/> {{fields[i+7].name}}<br> -->
-                            <input type="checkbox" [formControl]="field"/> {{fields[i+7].name}}<br>
-                        </div>    
-                    </div>
-
-                    <div class="form-group">
-                        <p>
-                            <label>Selection Method Description</label>
-                        </p>    
-                        <div *ngFor="let field of user?.controls?.fields?.controls | slice:10; let i=index">
-                            <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+9].name}}"/> {{fields[i+10].name}}<br> -->
-                            <input type="checkbox" [formControl]="field"/> {{fields[i+10].name}}<br>
-                        </div>   
-                    </div>
-                    <button type="submit" class="btn btn-success button_submit">Submit</button>   
-                </form>
             </div>
+            <div class="container container-box"> 
+                <div id="formContent" class="collapse in">
+                    <form [formGroup]="user" (ngSubmit)="onSubmit(user, $event)">
+                        <div class="form-group">
+                            <p>
+                                <label>Agency Name</label>
+                            </p> 
+                            <div *ngFor='let field of user?.controls?.fields?.controls | slice:0:5; let i=index'>
+                                <input type="checkbox" [formControl]="field"/> {{fields[i].name}}<br>
+                            </div>    
+                        </div>
+
+                        <div class="form-group">
+                            <p>
+                                <label>Section Name</label>
+                            </p>  
+                            <div *ngFor='let field of user?.controls?.fields?.controls | slice:5:6; let i=index'>
+                                <input type="checkbox" [formControl]="field"/> {{fields[i+5].name}}<br>
+                            </div> 
+                        </div>
+
+                        <div class="form-group"> 
+                            <p>
+                                <label>Category Description</label>
+                            </p>
+                            <div *ngFor="let field of user?.controls?.fields?.controls | slice:6:7; let i=index">
+                                <input type="checkbox" [formControl]="field"/> {{fields[i+6].name}}<br>
+                            </div> 
+                        </div>
+                        
+                        <div class="form-group">
+                            <p>
+                                <label>Type of Notice Description</label>
+                            </p>
+                            <div *ngFor="let field of user?.controls?.fields?.controls | slice:7:10; let i=index">
+                                <input type="checkbox" [formControl]="field"/> {{fields[i+7].name}}<br>
+                            </div>    
+                        </div>
+
+                        <div class="form-group">
+                            <p>
+                                <label>Selection Method Description</label>
+                            </p>    
+                            <div *ngFor="let field of user?.controls?.fields?.controls | slice:10; let i=index">
+                                <input type="checkbox" [formControl]="field"/> {{fields[i+10].name}}<br>
+                            </div>   
+                        </div>
+                        <button type="submit" class="btn btn-success button_submit">Submit</button>   
+                    </form>
+                </div>
+            </div>    
         </div>
 
 
         <div class="child">
-            <div class="cotainer">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-6">
-                        <button type="text" class="button_label" data-toggle="collapse" data-target="#agencyTable">Agency Name Listing:</button>
-                        <div id="agencyTable" class="collapse in">
-                            <div *ngIf="queryStreamAgency" style="height: 200px !important; overflow: scroll;">
-                                <table class="table table-bordered table striped table-hover">
-                                    <thead>
-                                        <th class="text-center">Agency Name</th>
-                                        <th class="text-center">Type of Notice Description</th>
-                                        <th class="text-center">Category Description</th>
-                                        <th class="text-center">Short Title</th>
-                                        <th class="text-center">Selection Method Description</th>
-                                        <th class="text-center">Section Name</th> 
-                                        <th class="text-center">Contact Number</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let item of queryStreamAgency">
-                                            <td>{{item.agency_name}}</td>
-                                            <td>{{item.type_of_notice_description}}</td>
-                                            <td>{{item.category_description}}</td>
-                                            <td>{{item.short_title}}</td>
-                                            <td>{{item.selection_method_description}}</td>
-                                            <td>{{item.section_name}}</td>
-                                            <td>{{item.contact_name}}</td>
-                                            <td>{{item.contact_phone}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>  
-                        </div>
-                    </div> 
-                </div>
-            </div>        
-            <div class="cotainer">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-6">
-                        <button type="text" class="button_label" data-toggle="collapse" data-target="#sectionTable">Section Name Listing:</button>
-                        <div id="sectionTable" class="collapse in">                   
-                            <div *ngIf="queryStreamSection" style="height: 200px !important; overflow: scroll;">                    
-                                <table class="table table-bordered table striped table-hover">
-                                    <thead>
-                                        <th class="text-center">Section Name</th> 
-                                        <th class="text-center">Agency Name</th>
-                                        <th class="text-center">Type of Notice Description</th>
-                                        <th class="text-center">Category Description</th>
-                                        <th class="text-center">Short Title</th>
-                                        <th class="text-center">Selection Method Description</th>
-                                        <th class="text-center">Contact Name</th>
-                                        <th class="text-center">Contact Number</th>
-                                    </thead>                                       
-                                    <tbody>
-                                        <tr *ngFor="let item of queryStreamSection">
-                                            <td>{{item.section_name}}</td>                                
-                                            <td>{{item.agency_name}}</td>
-                                            <td>{{item.type_of_notice_description}}</td>
-                                            <td>{{item.category_description}}</td>
-                                            <td>{{item.short_title}}</td>
-                                            <td>{{item.selection_method_description}}</td>
-                                            <td>{{item.contact_name}}</td>
-                                            <td>{{item.contact_phone}}</td>
-                                        </tr>    
-                                    </tbody>
-                                </table>
-                            </div>    
+                    <button type="text" class="button_label" data-toggle="collapse" data-target="#agencyTable">Agency Name Listing:</button>
+                    <div id="agencyTable" class="collapse in">
+                        <div *ngIf="queryStreamAgency" style="height: 200px !important; overflow: scroll;">
+                            <table class="table table-bordered table striped table-hover">
+                                <thead>
+                                    <th class="text-center">Agency Name</th>
+                                    <th class="text-center">Type of Notice Description</th>
+                                    <th class="text-center">Category Description</th>
+                                    <th class="text-center">Short Title</th>
+                                    <th class="text-center">Selection Method Description</th>
+                                    <th class="text-center">Section Name</th> 
+                                    <th class="text-center">Contact Number</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of queryStreamAgency">
+                                        <td>{{item.agency_name}}</td>
+                                        <td>{{item.type_of_notice_description}}</td>
+                                        <td>{{item.category_description}}</td>
+                                        <td>{{item.short_title}}</td>
+                                        <td>{{item.selection_method_description}}</td>
+                                        <td>{{item.section_name}}</td>
+                                        <td>{{item.contact_name}}</td>
+                                        <td>{{item.contact_phone}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>    
-                    </div>
+                    </div>  
+                </div>
+            </div>       
+            <div class="container">
+                <div class="row">
+                    <button type="text" class="button_label" data-toggle="collapse" data-target="#sectionTable">Section Name Listing:</button>
+                    <div id="sectionTable" class="collapse in">                   
+                        <div *ngIf="queryStreamSection" style="height: 200px !important; overflow: scroll;">                    
+                            <table class="table table-bordered table striped table-hover">
+                                <thead>
+                                    <th class="text-center">Section Name</th> 
+                                    <th class="text-center">Agency Name</th>
+                                    <th class="text-center">Type of Notice Description</th>
+                                    <th class="text-center">Category Description</th>
+                                    <th class="text-center">Short Title</th>
+                                    <th class="text-center">Selection Method Description</th>
+                                    <th class="text-center">Contact Name</th>
+                                    <th class="text-center">Contact Number</th>
+                                </thead>                                       
+                                <tbody>
+                                    <tr *ngFor="let item of queryStreamSection">
+                                        <td>{{item.section_name}}</td>                                
+                                        <td>{{item.agency_name}}</td>
+                                        <td>{{item.type_of_notice_description}}</td>
+                                        <td>{{item.category_description}}</td>
+                                        <td>{{item.short_title}}</td>
+                                        <td>{{item.selection_method_description}}</td>
+                                        <td>{{item.contact_name}}</td>
+                                        <td>{{item.contact_phone}}</td>
+                                    </tr>    
+                                </tbody>
+                            </table>
+                        </div>    
+                    </div>    
                 </div>
             </div>    
-            <div class="cotainer">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-6">
-                        <button type="text" class="button_label" data-toggle="collapse" data-target="#categoryTable">Category Description Listing:</button>
-                        <div id="categoryTable" class="collapse in">   
-                            <div *ngIf="queryStreamCategory" style="height: 200px !important; overflow: scroll;">  
-                                <table class="table table-bordered table striped table-hover">
-                                    <thead>
-                                        <th class="col-md-2"></th>
-                                        <th class="text-center">Category Description</th>
-                                        <th class="text-center">Section Name</th> 
-                                        <th class="text-center">Agency Name</th>
-                                        <th class="text-center">Type of Notice Description</th>
-                                        <th class="text-center">Short Title</th>
-                                        <th class="text-center">Selection Method Description</th>
-                                        <th class="text-center">Contact Name</th>
-                                        <th class="text-center">Contact Number</th>                                   
-                                    </thead>                                         
-                                    <tbody>    
-                                        <tr *ngFor="let item of queryStreamCategory">
-                                            <td>{{item.category_description}}</td>
-                                            <td>{{item.section_name}}</td>                                
-                                            <td>{{item.agency_name}}</td>
-                                            <td>{{item.type_of_notice_description}}</td>
-                                            <td>{{item.short_title}}</td>
-                                            <td>{{item.selection_method_description}}</td>
-                                            <td>{{item.contact_name}}</td>
-                                            <td>{{item.contact_phone}}</td>
-                                        </tr>    
-                                    </tbody>
-                                </table>
-                            </div>    
-                        </div>
+                    <button type="text" class="button_label" data-toggle="collapse" data-target="#categoryTable">Category Description Listing:</button>
+                    <div id="categoryTable" class="collapse in">   
+                        <div *ngIf="queryStreamCategory" style="height: 200px !important; overflow: scroll;">  
+                            <table class="table table-bordered table striped table-hover">
+                                <thead>
+                                    <th class="col-md-2"></th>
+                                    <th class="text-center">Category Description</th>
+                                    <th class="text-center">Section Name</th> 
+                                    <th class="text-center">Agency Name</th>
+                                    <th class="text-center">Type of Notice Description</th>
+                                    <th class="text-center">Short Title</th>
+                                    <th class="text-center">Selection Method Description</th>
+                                    <th class="text-center">Contact Name</th>
+                                    <th class="text-center">Contact Number</th>                                   
+                                </thead>                                         
+                                <tbody>    
+                                    <tr *ngFor="let item of queryStreamCategory">
+                                        <td>{{item.category_description}}</td>
+                                        <td>{{item.section_name}}</td>                                
+                                        <td>{{item.agency_name}}</td>
+                                        <td>{{item.type_of_notice_description}}</td>
+                                        <td>{{item.short_title}}</td>
+                                        <td>{{item.selection_method_description}}</td>
+                                        <td>{{item.contact_name}}</td>
+                                        <td>{{item.contact_phone}}</td>
+                                    </tr>    
+                                </tbody>
+                            </table>
+                        </div>    
                     </div>
                 </div>
             </div>
-            <div class="cotainer">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-6">                        
-                        <button type="text" class="button_label" data-toggle="collapse" data-target="#typeDescTable">Type of Notice Description Listing:</button>
-                        <div id="typeDescTable" class="collapse in">  
-                            <div *ngIf="queryStreamTypeDesc" style="height: 200px !important; overflow: scroll;">  
-                                <table class="table table-bordered table striped table-hover">
-                                    <thead>
-                                        <th class="col-md-2"></th>
-                                        <th class="text-center">Type of Notice Description</th>
-                                        <th class="text-center">Category Description</th>
-                                        <th class="text-center">Section Name</th> 
-                                        <th class="text-center">Agency Name</th>
-                                        <th class="text-center">Short Title</th>
-                                        <th class="text-center">Selection Method Description</th>
-                                        <th class="text-center">Contact Name</th>
-                                        <th class="text-center">Contact Number</th>   
-                                    </thead>                                         
-                                    <tbody>    
-                                        <tr *ngFor="let item of queryStreamTypeDesc">
-                                            <td>{{item.type_of_notice_description}}</td>
-                                            <td>{{item.category_description}}</td>
-                                            <td>{{item.section_name}}</td>                                
-                                            <td>{{item.agency_name}}</td>
-                                            <td>{{item.short_title}}</td>
-                                            <td>{{item.selection_method_description}}</td>
-                                            <td>{{item.contact_name}}</td>
-                                            <td>{{item.contact_phone}}</td>
-                                        </tr>    
-                                    </tbody>
-                                </table>
-                            </div>    
-                        </div>
+                    <button type="text" class="button_label" data-toggle="collapse" data-target="#typeDescTable">Type of Notice Description Listing:</button>
+                    <div id="typeDescTable" class="collapse in">  
+                        <div *ngIf="queryStreamTypeDesc" style="height: 200px !important; overflow: scroll;">  
+                            <table class="table table-bordered table striped table-hover">
+                                <thead>
+                                    <th class="col-md-2"></th>
+                                    <th class="text-center">Type of Notice Description</th>
+                                    <th class="text-center">Category Description</th>
+                                    <th class="text-center">Section Name</th> 
+                                    <th class="text-center">Agency Name</th>
+                                    <th class="text-center">Short Title</th>
+                                    <th class="text-center">Selection Method Description</th>
+                                    <th class="text-center">Contact Name</th>
+                                    <th class="text-center">Contact Number</th>   
+                                </thead>                                         
+                                <tbody>    
+                                    <tr *ngFor="let item of queryStreamTypeDesc">
+                                        <td>{{item.type_of_notice_description}}</td>
+                                        <td>{{item.category_description}}</td>
+                                        <td>{{item.section_name}}</td>                                
+                                        <td>{{item.agency_name}}</td>
+                                        <td>{{item.short_title}}</td>
+                                        <td>{{item.selection_method_description}}</td>
+                                        <td>{{item.contact_name}}</td>
+                                        <td>{{item.contact_phone}}</td>
+                                    </tr>    
+                                </tbody>
+                            </table>
+                        </div>    
                     </div>
                 </div>
             </div>            
-            <div class="cotainer">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-6">   
-                        <button type="text" class="button_label" data-toggle="collapse" data-target="#selMethTable">Selection Method Description Listing:</button>
-                        <div id="#selMethTable" class="collapse in"> 
-                            <div *ngIf="queryStreamSelMeth" style="height: 200px !important; overflow: scroll;">  
-                                <table class="table table-bordered table striped table-hover">
-                                    <thead>
-                                        <th class="col-md-2"></th>
-                                        <th class="text-center">Selection Method Description</th>
-                                        <th class="text-center">Category Description</th>
-                                        <th class="text-center">Section Name</th> 
-                                        <th class="text-center">Agency Name</th>
-                                        <th class="text-center">Type of Notice Description</th>
-                                        <th class="text-center">Short Title</th>
-                                        <th class="text-center">Contact Name</th>
-                                        <th class="text-center">Contact Number</th>                                    
-                                    </thead>
-                                    <tbody>    
-                                        <tr *ngFor="let item of queryStreamSelMeth">
-                                            <td>{{item.selection_method_description}}</td>
-                                            <td>{{item.category_description}}</td>
-                                            <td>{{item.section_name}}</td>                                
-                                            <td>{{item.agency_name}}</td>
-                                            <td>{{item.type_of_notice_description}}</td>
-                                            <td>{{item.short_title}}</td>
-                                            <td>{{item.contact_name}}</td>
-                                            <td>{{item.contact_phone}}</td>
-                                        </tr>    
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>    
-                    </div>
+            <div class="container">
+                <div class="row">  
+                    <button type="text" class="button_label" data-toggle="collapse" data-target="#selMethTable">Selection Method Description Listing:</button>
+                    <div id="#selMethTable" class="collapse in"> 
+                        <div *ngIf="queryStreamSelMeth" style="height: 200px !important; overflow: scroll;">  
+                            <table class="table table-bordered table striped table-hover">
+                                <thead>
+                                    <th class="col-md-2"></th>
+                                    <th class="text-center">Selection Method Description</th>
+                                    <th class="text-center">Category Description</th>
+                                    <th class="text-center">Section Name</th> 
+                                    <th class="text-center">Agency Name</th>
+                                    <th class="text-center">Type of Notice Description</th>
+                                    <th class="text-center">Short Title</th>
+                                    <th class="text-center">Contact Name</th>
+                                    <th class="text-center">Contact Number</th>                                    
+                                </thead>
+                                <tbody>    
+                                    <tr *ngFor="let item of queryStreamSelMeth">
+                                        <td>{{item.selection_method_description}}</td>
+                                        <td>{{item.category_description}}</td>
+                                        <td>{{item.section_name}}</td>                                
+                                        <td>{{item.agency_name}}</td>
+                                        <td>{{item.type_of_notice_description}}</td>
+                                        <td>{{item.short_title}}</td>
+                                        <td>{{item.contact_name}}</td>
+                                        <td>{{item.contact_phone}}</td>
+                                    </tr>    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>    
                 <div>
             </div>
         </div>
 
-
         <div class="child">
+            <div class="container">
+                <div class="form-group" style="height: 200px !important; overflow: scroll;">
+                    <label for="exampleFormControlTextarea2">Notes:</label>
+                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="4"></textarea>
+                </div>
+            </div>    
         </div>
-
         <a id="topright" href="#" title="TopRight">Top Right Link Text</a>
-        <button type="button" class="logout btns"> Log Out</button>              
+        <app-logout></app-logout>
     </div>
 
 </div>
