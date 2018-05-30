@@ -4,11 +4,14 @@
             <div class="filter-header">
                 <div class="filter-buttons">
                     <div class="col-sm">
+                    <!-- <div>     -->
                         Select your filters:
                     </div>
                     <div class="col-sm">
-                        <div class="filter-buttons_2">
-                            <button type="submit" class="btn btn-success">Hide</button>
+                    <!-- <div> -->
+                        <div class="filter-hide">
+
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#formContent">Hide</button>
                         </div>    
                         <div class="filter-buttons_2">                               
                             <button type="submit" class="btn btn-success">Save</button>
@@ -16,76 +19,106 @@
                     </div>    
                 </div>
             </div>    
-
-            <form [formGroup]="user" (ngSubmit)="onSubmit(user, $event)">
-            <!-- <form [formGroup]="form" (submit)="submit(form.value)"> -->
-                <div class="form-group">
-                    <p>
-                        <label>Agency Name</label>
-                    </p> 
-                    <div *ngFor='let field of user?.controls?.fields?.controls | slice:0:5; let i=index'>
-                        <!-- <input type="checkbox" [formControl]="field" [formControlName]="fields[i].name"/> {{fields[i].name}}<br> -->
-                        <input type="checkbox" [formControl]="field"/> {{fields[i].name}}<br>
-                    </div>    
-                </div>
-
-                <div class="form-group">
-                    <p>
-                        <label>Section Name</label>
-                    </p>  
-                    <div *ngFor='let field of user?.controls?.fields?.controls | slice:5:6; let i=index'>
-                        <!-- <input type="checkbox" [formControl]="field" [formControlName]="fields[i+5].name"/> {{fields[i+5].name}}<br> -->
-                        <input type="checkbox" [formControl]="field"/> {{fields[i+5].name}}<br>
-                    </div> 
-                </div>
-
-                <div class="form-group"> 
-                    <p>
-                        <label>Category Description</label>
-                    </p>
-                    <div *ngFor="let field of user?.controls?.fields?.controls | slice:6:7; let i=index">
-                        <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+7].name}}"/> {{fields[i+6].name}}<br> -->
-                        <input type="checkbox" [formControl]="field"/> {{fields[i+6].name}}<br>
-                    </div> 
-                </div>
-                
-                <div class="form-group">
-                    <p>
-                        <label>Type of Notice Description</label>
-                    </p>
-                    <div *ngFor="let field of user?.controls?.fields?.controls | slice:7:10; let i=index">
-                        <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+8].name}}"/> {{fields[i+7].name}}<br> -->
-                        <input type="checkbox" [formControl]="field"/> {{fields[i+7].name}}<br>
-                    </div>    
-                </div>
-
-                <div class="form-group">
-                    <p>
-                        <label>Selection Method Description</label>
-                    </p>    
-                    <div *ngFor="let field of user?.controls?.fields?.controls | slice:10; let i=index">
-                            <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+9].name}}"/> {{fields[i+10].name}}<br> -->
-                            <input type="checkbox" [formControl]="field"/> {{fields[i+10].name}}<br>
+            <div id="formContent" class="collapse in">
+                <form [formGroup]="user" (ngSubmit)="onSubmit(user, $event)">
+                <!-- <form [formGroup]="form" (submit)="submit(form.value)"> -->
+                    <div class="form-group">
+                        <p>
+                            <label>Agency Name</label>
+                        </p> 
+                        <div *ngFor='let field of user?.controls?.fields?.controls | slice:0:5; let i=index'>
+                            <!-- <input type="checkbox" [formControl]="field" [formControlName]="fields[i].name"/> {{fields[i].name}}<br> -->
+                            <input type="checkbox" [formControl]="field"/> {{fields[i].name}}<br>
                         </div>    
-                </div>
+                    </div>
 
-                <div class="button_submit">
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </div>  
-            </form>
+                    <div class="form-group">
+                        <p>
+                            <label>Section Name</label>
+                        </p>  
+                        <div *ngFor='let field of user?.controls?.fields?.controls | slice:5:6; let i=index'>
+                            <!-- <input type="checkbox" [formControl]="field" [formControlName]="fields[i+5].name"/> {{fields[i+5].name}}<br> -->
+                            <input type="checkbox" [formControl]="field"/> {{fields[i+5].name}}<br>
+                        </div> 
+                    </div>
+
+                    <div class="form-group"> 
+                        <p>
+                            <label>Category Description</label>
+                        </p>
+                        <div *ngFor="let field of user?.controls?.fields?.controls | slice:6:7; let i=index">
+                            <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+7].name}}"/> {{fields[i+6].name}}<br> -->
+                            <input type="checkbox" [formControl]="field"/> {{fields[i+6].name}}<br>
+                        </div> 
+                    </div>
+                    
+                    <div class="form-group">
+                        <p>
+                            <label>Type of Notice Description</label>
+                        </p>
+                        <div *ngFor="let field of user?.controls?.fields?.controls | slice:7:10; let i=index">
+                            <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+8].name}}"/> {{fields[i+7].name}}<br> -->
+                            <input type="checkbox" [formControl]="field"/> {{fields[i+7].name}}<br>
+                        </div>    
+                    </div>
+
+                    <div class="form-group">
+                        <p>
+                            <label>Selection Method Description</label>
+                        </p>    
+                        <div *ngFor="let field of user?.controls?.fields?.controls | slice:10; let i=index">
+                                <!-- <input type="checkbox" [formControl]="field" formControlName="{{fields[i+9].name}}"/> {{fields[i+10].name}}<br> -->
+                                <input type="checkbox" [formControl]="field"/> {{fields[i+10].name}}<br>
+                            </div>    
+                    </div>
+
+                    <div class="button_submit">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>  
+                </form>
+            </div>
         </div>
 
 
         <div class="child">
-            <div>
-                <h4>Data from Agency Name Selections:</h4>
-                <ul *ngIf="queryStreamAgency">
-                    <li *ngFor="let item of queryStreamAgency">
-                        {{item.agency_name}} 
-                    </li>               
-                </ul>
-            </div>
+            <div class="cotainer">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6">
+                        <table class="table table-bordered table striped table-hover">
+                            <thead>
+                                <tr>
+                                    <td colspan="4">Data from Agency Name Selections:</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="queryStreamAgency">
+                                    <th class="col-md-2"></td>
+                                    <th class="text-center">Average</td>
+                                    <th class="text-center"></td>
+                                    <th class="text-center"></td>
+                                    <th class="text-center"></td>
+                                    <th class="text-center"></td>
+                                    <th class="text-center"></td>   
+                                </tr>
+                                    <td>*ngFor="let item of queryStreamAgency"></td>
+                                            {{item.agency_name}} 
+                                        </li>               
+                                    </ul>
+                            </tbody>
+                            <ul *ngIf="queryStreamAgency">
+                                <li *ngFor="let item of queryStreamAgency">
+                                    {{item.agency_name}} 
+                                </li>               
+                            </ul>
+                            </div>
+                        </table>
+                        </div>
   
+
+
+
+
+
             <div>
                 <h4>Data from Section Name Selections:</h4>
                 <ul *ngIf="queryStreamAgency">
@@ -129,5 +162,7 @@
         </div>
              
     </div>
+    <a id="topright" href="#" title="TopRight">Top Right Link Text</a>
+    <button type="button" class="logout btns"> Log Out</button> 
 </div>
  

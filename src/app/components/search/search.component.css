@@ -2,7 +2,7 @@
 .filter-header {
     display: inline-block;
     width: 50%;
-    background:blue;
+    /* background:blue; */
     padding-left: 2%;
     height:50px;
 }
@@ -14,7 +14,7 @@
     column-count: 3;
 }
 
-ilter-buttons_2{
+.filter-hide { 
     margin:0 10px;
     float: right;
 }
@@ -22,7 +22,6 @@ ilter-buttons_2{
      float: right;
      margin: .5em;
 } 
-  
   
 body {
     font-family: sans-serif;
@@ -35,4 +34,31 @@ body {
   
 p:not(.intro) {
     text-align: center;
+}
+
+#topright {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    display: block;
+    height: 40px;
+    width: 40px;
+    text-indent: -999em;
+    text-decoration: none;
+    /* background: url("https://media.giphy.com/media/OK5LK5zLFfdm/giphy.gif") no-repeat */
+    background: url('/assets/profile_image.png') no-repeat
+}
+
+
+.logout{
+    position: absolute;
+    line-height: 12px;
+    width: 80px;
+    font-size: 10pt;
+    font-family: tahoma;
+    margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    top: 60px;
+    right: 10px;
 }

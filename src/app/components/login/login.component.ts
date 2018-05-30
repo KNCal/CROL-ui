@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
 
   validationMessages = {
     'email': {
-        'required': 'Name is required'
+        'required': 'Name required'
     },
     'password': {
-        'required': 'Name is required'
+        'required': 'Password required'
     }
   }
 
@@ -58,14 +58,6 @@ export class LoginComponent implements OnInit {
       this.formFields[field] = '';
       const control = form.get(field);
 
-      // if(control && control.dirty && !control.valid) {
-      //   console.log('Invalid input');
-      //   const messages = this.validationMessages[field];
-      //   for(const key in control.errors) {
-      //       this.formFields[field] += messages[key] + ' ';
-      //   }
-      // }
-
       if(control) {
         if (control.dirty && !control.valid) {
           console.log('Invalid input');
@@ -78,25 +70,19 @@ export class LoginComponent implements OnInit {
       else {
         console.log('No input ' + control);
       }
-
     }
   }
 
-
-  //Check for authentication then route to next page. 
-  //For this example, we'll skip authentication.
   validateUser(user1) {
     this.userService.getUser(user1)
         .subscribe( data => {
           this.users = data.json();
           console.log(data);
     });
-
     //if succeed:
     this.router.navigate(['/search']);
   }
 
-  
 
   onSubmit(user: FormGroup, event: Event) {
     event.preventDefault();

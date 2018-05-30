@@ -7,7 +7,7 @@ export class Field {
 }
 
 export const fields: Field[] = [ 
-    { name: 'Board Meeting', tag: 'Board Meeting', category: 'agency_name', selected: false, id: 1 },
+    { name: 'Aging', tag: 'Aging', category: 'agency_name', selected: false, id: 1 },
     { name: 'Housing Authority', tag: 'Housing Authority', category: 'agency_name', selected: false, id: 2 },
     { name: 'Housing Preservation & Development', tag: 'HOUSING PRESERVATION & DVLPMNT', category: 'agency_name', selected: false, id: 3 },
     { name: 'Parks & Recreation Department', tag: 'DEPT OF PARKS & RECREATION', category: 'agency_name', selected: false, id: 4 },

@@ -1,13 +1,11 @@
 import { element } from 'protractor';
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from './search.service';
-// import { Http } from '@angular/http';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators'; 
 import { distinctUntilChanged } from 'rxjs/operators';
 import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 import { fields } from '../../fields';
-
 
 
 @Component({
@@ -21,20 +19,12 @@ export class SearchComponent implements OnInit {
   user: FormGroup;
   prefix: string;
   queryStr: string;
-  items: any;
-  // agencyQuery = '';
 
   searchSubjectAgency = new Subject();
   searchSubjectSection = new Subject();
   searchSubjectCategory= new Subject();
   searchSubjectTypeDesc = new Subject();
   searchSubjectSelMeth = new Subject();
-
-  totalAgencyCount: any;
-  totalSectionCount: any;
-  totalCategoryCount: any;
-  totalTypeDescCount: any;
-  totalSelMethCount: any;
 
   queryStreamAgency: any;
   queryStreamSection: any;
@@ -49,7 +39,7 @@ export class SearchComponent implements OnInit {
     private searchService: SearchService
     ) 
     { 
-      // this.createForm()
+      this.createForm()
     }  
 
   createForm() {
@@ -66,7 +56,7 @@ export class SearchComponent implements OnInit {
   }
 
 
-  buildQueryAPI(typeCount, type) {
+  buildQueryAPI (typeCount, type) {
     this.prefix = 'https://data.cityofnewyork.us/resource/buex-bi6w.json?$where=' + type + ' in (\'';
     this.queryStr = '';
 
@@ -79,17 +69,27 @@ export class SearchComponent implements OnInit {
         this.queryStr = encodeURIComponent(this.queryStr);
         this.queryStr += ')';
         this.queryStr = this.prefix + this.queryStr;
-        console.log(this.queryStr); 
-        return this.queryStr;
-        // return this.searchSubject.next(this.queryStr); 
-    }
-  }
 
+        //next only on the service that has been subscribed
+        switch (type) {
+          case 'agency_name' : this.searchSubjectAgency.next(this.queryStr);
+            break;
+          case 'section_name' : this.searchSubjectSection.next(this.queryStr);
+            break;
+          case 'category_description' : this.searchSubjectCategory.next(this.queryStr);
+            break;
+          case 'type_of_notice_description' : this.searchSubjectTypeDesc.next(this.queryStr);
+            break; 
+          case 'selection_method_description' : this.searchSubjectSelMeth.next(this.queryStr);
+            break;
+          default:
+            break;      
+    }}};
+  
 
   onSubmit(user1: FormGroup, event: Event) {
     event.preventDefault(); 
 
-    // var agencyQuery = '';
     //Get index of the values that are true
     var x = user1.value.fields.map((y,index) => {if (y) return index;});
   
@@ -102,25 +102,16 @@ export class SearchComponent implements OnInit {
     const typeDescCount: string[] = filtered.filter(y => "6" < y && y < "10");
     const selMethCount: string[] = filtered.filter(y => y > "9");
 
-
-    var agencyQuery = this.buildQueryAPI(agencyCount, 'agency_name');
-    var sectionQuery = this.buildQueryAPI(sectionCount, 'section_name');
-    var categoryQuery = this.buildQueryAPI(categoryCount, 'category_description');
-    var typeDescQuery = this.buildQueryAPI(typeDescCount, 'type_of_notice_description');
-    var selMethQuery = this.buildQueryAPI(selMethCount, 'selection_method_description');    
-
-    this.searchSubjectAgency.next(agencyQuery);
-    this.searchSubjectSection.next(sectionQuery);
-    this.searchSubjectCategory.next(categoryQuery);
-    this.searchSubjectTypeDesc.next(typeDescQuery);
-    this.searchSubjectSelMeth.next(selMethQuery);
+    this.buildQueryAPI(agencyCount, 'agency_name');
+    this.buildQueryAPI(sectionCount, 'section_name');
+    this.buildQueryAPI(categoryCount, 'category_description');
+    this.buildQueryAPI(typeDescCount, 'type_of_notice_description');
+    this.buildQueryAPI(selMethCount, 'selection_method_description');  
   }
   
 
   ngOnInit() {
-
-    this.createForm();
-
+    // this.createForm();
     this.searchSubjectAgency
     .pipe(debounceTime(1000))
     .pipe(distinctUntilChanged())
@@ -135,7 +126,6 @@ export class SearchComponent implements OnInit {
     .subscribe(sQ=>
         this.searchService.callAPI(sQ)
         .subscribe(response => this.queryStreamSection = response.json()));
-
 
     this.searchSubjectCategory
     .pipe(debounceTime(1000))
