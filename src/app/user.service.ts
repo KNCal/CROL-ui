@@ -19,7 +19,9 @@ export class UserService {
   // }
 
   getUser(user) {
-    return this.http.get(`/api/users/${user.id}`);
+    console.log(user.id);
+    return this.http.get(`/api/users/${user}`);
+    // return this.http.get(`/api/users/` + user.id);
   }
 
   addUser(user) {
