@@ -20,8 +20,11 @@
 }
 
 .button_submit {
-     position: relative;
-     right: -90%;
+     /* position: relative;
+     right: -90%; */
+     position: absolute;
+     margin: 10px 0;
+     right: 30px;
 } 
   
 .button_label {
@@ -54,25 +57,17 @@ p:not(.intro) {
     width: 40px;
     text-indent: -999em;
     text-decoration: none;
-    /* background: url("https://media.giphy.com/media/OK5LK5zLFfdm/giphy.gif") no-repeat */
     background: url('/assets/profile_image.png') no-repeat
 }
 
-
-
-/* .table-display {
-    display: block;
-} */
-
-#container::after { 
+/* #container::after { 
     content: "";
     display: block; 
     clear: both;
-}
+} */
 
 .container-box {
-    border: 2px solid black;
-    /* border-radius: 10px; */
-    margin-top: 30px;
-    margin-bottom: 15px;
+    /* border: 2px solid black; */
+    margin-top: 25px;
+    margin-bottom: 20px;
 }
