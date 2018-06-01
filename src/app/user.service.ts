@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+// import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -7,16 +8,23 @@ import { Http } from '@angular/http';
 export class UserService {
 
   // defaultFilters = '0000000000000000';
+  // user: User;
+  
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: Http) { }
+  getUsername(user) {
+    console.log(user.username);
+    // console.log(`${user.username}`);
+    return this.http.get(`api/users/find/${user.username}`);
+  }
 
   getAllUsers() {
     return this.http.get('/api/users');
   }
   
-  // getUser(id: string) {
-  //   return this.http.get('/api/users/${id}');
-  // }
+  getUserByID(id) {
+    return this.http.get('api/users/' + id);
+  }
 
   getUser(user) {
     console.log(user.id);
@@ -26,16 +34,17 @@ export class UserService {
 
   addUser(user) {
     return this.http.post('/api/users',{
-      "email": user.email,
+      "username": user.username,
       "password": user.password,
       "filters": user.filters
     });
   }
 
   // Use backtick when using $
-  editUser(user) {
-    return this.http.patch(`/api/users/${user.id}`, {
-      "email": user.email,
+  editUser(userId,user) {
+    return this.http.patch('/api/users/' + userId, {
+      "id" : userId,
+      "username": user.username,
       "password": user.password,
       "filters": user.filters
     });

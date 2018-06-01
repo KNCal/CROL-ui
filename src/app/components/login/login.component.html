@@ -1,16 +1,14 @@
 <div class="container">
       <form name="logInForm" [formGroup]="user" (ngSubmit)="onSubmit(user, $event)">
-          <div class="form-group" [class.has-error]="!user.get('logInEmail').valid" [class.has-success]="user.get('logInEmail').valid">
-              <input type="email" formControlName="logInEmail" placeholder="Enter email" class="form-control-sm" required>
+          <div class="form-group">
+              <input type="text" formControlName="logInUsername" placeholder="Enter username" class="form-control-sm" required>
               <label style="color: red; padding:3px"> *</label>
           </div>
-          <div class="form-group" [class.has-error]="!user.get('logInPassword').valid" [class.has-success]="user.get('logInPassword').valid">      
-              <input type="password" formControlName="logInPassword" placeholder="Enter password" class="form-control-sm" required>
+          <div class="form-group">      
+              <input type="text" formControlName="logInPassword" placeholder="Enter password" class="form-control-sm" required>
               <label style="color: red; padding:3px"> *</label>
           </div>  
           <div class="form-group">
-              <!-- <button type="button" [routerLink]="['/search']" class="btn btn-primary" [disabled]="!user.valid">Log In</button> -->
-              <!-- <button type="button" class="btn btn-primary">Log In</button> -->
               <button type="submit" class="btn btn-primary">Log In</button>
           </div>
       </form>

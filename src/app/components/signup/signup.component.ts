@@ -15,23 +15,23 @@ export class SignupComponent implements OnInit {
   users: any;
 
   formFields = {
-    'email': '',
+    'username': '',
     'password': '',
     'confirmPassword': ''
   }
 
   newUser = new FormGroup({
-    signUpEmail: new FormControl(),
+    signUpUsername: new FormControl(),
     signUpPassword: new FormControl(),
     signUpConfirmPassword: new FormControl()
   })
  
   validationMessages = {
-    'email': {
-        'required': 'Name is required'
+    'username': {
+        'required': 'Username is required'
     },
     'password': {
-        'required': 'Name is required'
+        'required': 'Password is required'
     }
   }
 
@@ -53,14 +53,6 @@ export class SignupComponent implements OnInit {
         // clear previous messages
       this.formFields[field] = '';
       const control = form.get(field);
-
-      // if(control && control.dirty && !control.valid) {
-      //   console.log('Invalid input');
-      //   const messages = this.validationMessages[field];
-      //   for(const key in control.errors) {
-      //       this.formFields[field] += messages[key] + ' ';
-      //   }
-      // }
 
       if(control) {
         if (control.dirty && !control.valid) {
@@ -87,20 +79,14 @@ export class SignupComponent implements OnInit {
           .subscribe( data => {
             console.log(data);
     });
-
     this.router.navigateByUrl('/search');
-
-
   }
 
   ngOnInit() {
     this.newUser = this.fb.group({
-      signUpEmail: [ '', Validators.required ],
+      signUpUsername: [ '', Validators.required ],
       signUpPassword: [ '', Validators.required ],
       signUpConfirmedPassword: [ '', Validators.required ]
-      // "signUpEmail": this.signUpEmail,
-      // "signUpPassword": this.signUpPassword,
-      // "signUpConfirmedPassword": this.signUpConfirmedPassword
     });
   }
 

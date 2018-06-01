@@ -1,6 +1,6 @@
 import { SearchComponent } from './../search/search.component';
 import { User } from './../../user';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../user.service';
@@ -12,26 +12,31 @@ import { UserService } from '../../user.service';
 })
 export class LoginComponent implements OnInit {
 
-  // user = new FormGroup ({
-  //   logInEmail: new FormControl(),
-  //   logInPassword: new FormControl()
-  // });
+
 
   private router: Router;
   users: any;
+  userRetrieved: any;
+
+  currentUser = {
+    'username': '',
+    'password': ''
+  }
+
+  errors = '';
 
   formFields = {
-    'email': ' ',
+    'username': ' ',
     'password': ' '
   }
 
   user = new FormGroup({
-    logInEmail: new FormControl(),
+    logInUsername: new FormControl(),
     logInPassword: new FormControl()
   })
 
   validationMessages = {
-    'email': {
+    'username': {
         'required': 'Name required'
     },
     'password': {
@@ -73,22 +78,40 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  validateUser(user1) {
-    this.userService.getUser(user1)
-        .subscribe( data => {
-          this.users = data.json();
-          console.log(data);
-    });
-    //if succeed:
-    this.router.navigate(['/search']);
-  }
 
+  validateUser(user1: FormGroup) {
+    
+    this.currentUser.username = user1.value.logInUsername;
+    this.currentUser.password = user1.value.logInPassword;
+    console.log("USER: "+JSON.stringify(this.currentUser));
+    // console.log(user1.value.logInUsername);
+
+    // console.log(this.currentUser.username );
+    // var username = this.userService.getUsername(user1.value.logInUsername);
+    
+    this.userService.getUsername(this.currentUser)
+    .subscribe( data => {
+      console.log("DATA- "+JSON.stringify(data));
+      this.userRetrieved = data;
+      },
+      error => {
+        this.errors = error;
+      },
+      () => {
+
+        this.router.navigate(['/search', this.userRetrieved.id]);
+      }
+    );
+
+  
+  }
+  
 
   onSubmit(user: FormGroup, event: Event) {
     event.preventDefault();
-    this.user.valueChanges.subscribe(data => this.onChanges(data));
-    console.log(this.user.value);
-    console.log(this.user.status);
+    user.valueChanges.subscribe(data => this.onChanges(data));
+    console.log(this.user.value.logInUsername);
+    console.log(user.status);
     // validate user
     this.validateUser(user);
     this.router.navigate(['/search']);
@@ -96,7 +119,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.fb.group({
-      logInEmail: [ '', Validators.required ],
+      logInUsername: [ '', Validators.required ],
       logInPassword: [ '', Validators.required ]
     });
   };

@@ -18,8 +18,9 @@ const routes: Routes = [
         component: RegistrationComponent
     },
     {
-        path: 'search',
-        component: SearchComponent 
+        path: 'search/:id',
+        component: SearchComponent
+        // outlet: 'users-outlet'
     },
     {
         path: 'logout',

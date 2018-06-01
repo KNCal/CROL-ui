@@ -20,19 +20,16 @@
 }
 
 .button_submit {
-     /* position: relative;
-     right: -90%; */
      position: absolute;
      margin: 10px 0;
      right: 30px;
 } 
+
   
 .button_label {
-    padding: 1% 0 1% 0;
-    border: none;
     background: none;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 16px;
+    margin: 10px auto;
 }
 
 body {
@@ -58,6 +55,19 @@ p:not(.intro) {
     text-indent: -999em;
     text-decoration: none;
     background: url('/assets/profile_image.png') no-repeat
+}
+
+.username {
+    position: absolute;
+    line-height: 12px;
+    width: 80px;
+    font-size: 10pt;
+    font-family: tahoma;
+    margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    top: 60px;
+    right: 3px;
 }
 
 /* #container::after { 
